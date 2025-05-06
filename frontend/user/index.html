@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Code Portal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Access Code Portal</h1>
+        
+        <div class="card">
+            <h2>Get Your Access Code</h2>
+            <div class="form-group">
+                <label for="userId">Enter Your User ID:</label>
+                <input type="text" id="userId" placeholder="Your unique user identifier">
+            </div>
+            <button id="getCodeBtn" class="btn">Get Access Code</button>
+            
+            <div id="resultContainer" class="result-container hidden">
+                <h3>Your Access Code:</h3>
+                <div id="accessCode" class="access-code"></div>
+                <p id="resultMessage" class="result-message"></p>
+            </div>
+            
+            <div id="errorMessage" class="message"></div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

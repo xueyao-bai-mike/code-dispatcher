@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Code Admin Portal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Access Code Admin Portal</h1>
+        
+        <div class="card">
+            <h2>Upload Access Codes</h2>
+            <div class="form-group">
+                <label for="accessCodes">Enter Access Codes (one per line):</label>
+                <textarea id="accessCodes" rows="10" placeholder="Enter access codes here, one per line"></textarea>
+            </div>
+            <button id="uploadBtn" class="btn">Upload Access Codes</button>
+            <div id="uploadMessage" class="message"></div>
+        </div>
+        
+        <div class="card">
+            <h2>Access Code Status</h2>
+            <div class="button-group">
+                <button id="refreshBtn" class="btn">Refresh Status</button>
+                <button id="resetBtn" class="btn btn-danger">Reset All Codes</button>
+            </div>
+            <div class="status-container">
+                <div class="status-box">
+                    <h3>Available Codes: <span id="availableCount">0</span></h3>
+                    <div id="availableCodes" class="code-list"></div>
+                </div>
+                <div class="status-box">
+                    <h3>Used Codes: <span id="usedCount">0</span></h3>
+                    <div id="usedCodes" class="code-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
