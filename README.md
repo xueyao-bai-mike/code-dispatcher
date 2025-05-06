@@ -1,6 +1,6 @@
 # Access Code Dispatcher
 
-A simple web application for dispatching access codes to users. The application consists of an admin portal for uploading access codes and a user portal for users to retrieve their access codes.
+A serverless web application for dispatching access codes to users. The application consists of an admin portal for uploading access codes and a user portal for users to retrieve their access codes.
 
 ## Architecture
 
@@ -9,6 +9,19 @@ A simple web application for dispatching access codes to users. The application 
 - **Storage**: ElastiCache Redis for storing access codes
 - **API**: API Gateway for REST endpoints
 
+## Features
+
+### Admin Portal
+- Upload multiple access codes at once
+- View available and used access codes
+- Reset all access codes with a single click
+- Monitor usage statistics
+
+### User Portal
+- Request an access code by providing a user ID
+- View assigned access code
+- Simple and intuitive interface
+
 ## Project Structure
 
 ```
@@ -16,7 +29,8 @@ access-code-dispatcher/
 ├── backend/
 │   ├── admin/
 │   │   ├── upload_codes.py
-│   │   └── list_codes.py
+│   │   ├── list_codes.py
+│   │   └── reset_codes.py
 │   ├── user/
 │   │   └── get_code.py
 │   └── requirements.txt
@@ -34,18 +48,6 @@ access-code-dispatcher/
 │   └── requirements.txt
 └── README.md
 ```
-
-## Features
-
-### Admin Portal
-- Upload multiple access codes at once
-- View available and used access codes
-- Monitor usage statistics
-
-### User Portal
-- Request an access code by providing a user ID
-- View assigned access code
-- Simple and intuitive interface
 
 ## Deployment Instructions
 
@@ -65,7 +67,7 @@ access-code-dispatcher/
 
 2. Bootstrap your AWS environment (if not already done):
    ```
-   cdk bootstrap
+   cdk bootstrap aws://ACCOUNT-NUMBER/REGION
    ```
 
 3. Deploy the stack:
@@ -79,23 +81,17 @@ access-code-dispatcher/
    - Open `frontend/admin/script.js` and `frontend/user/script.js`
    - Replace `https://YOUR_API_GATEWAY_URL` with the actual API Gateway URL
 
-6. Redeploy the frontend (optional if you want to update the API endpoint):
+6. Redeploy the frontend:
    ```
    aws s3 sync frontend/ s3://YOUR_S3_BUCKET_NAME/
    ```
 
-## Usage
+## Technologies Used
 
-### Admin Portal
-1. Navigate to the admin portal URL (CloudFront URL + `/admin/index.html`)
-2. Enter access codes in the text area, one per line
-3. Click "Upload Access Codes" to add them to the system
-4. Use the "Refresh Status" button to view current code status
-
-### User Portal
-1. Navigate to the user portal URL (CloudFront URL + `/user/index.html`)
-2. Enter your user ID
-3. Click "Get Access Code" to receive your access code
+- **AWS Services**: Lambda, API Gateway, S3, CloudFront, ElastiCache Redis, VPC
+- **Frontend**: HTML, CSS, JavaScript
+- **Backend**: Python
+- **Infrastructure as Code**: AWS CDK
 
 ## Notes
 - This application does not include authentication or user management
